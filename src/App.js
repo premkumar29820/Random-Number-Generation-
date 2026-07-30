@@ -1,5 +1,4 @@
 import RandomNumber from "./component/random.js";
-import { useState } from "react";
 
 
 function App() {

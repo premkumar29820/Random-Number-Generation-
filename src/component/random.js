@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+
 function RandomNumber() {
   var [random, setRandom] = useState(null)
 
@@ -9,7 +12,7 @@ function RandomNumber() {
   }
 
     var reset = () => {
-    setRandom("No number generated yet")
+    setRandom(null)
   }
 
  
