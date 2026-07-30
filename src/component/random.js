@@ -12,7 +12,7 @@ function RandomNumber() {
   }
 
     var reset = () => {
-    setRandom(0)
+    setRandom(null)
   }
 
  
