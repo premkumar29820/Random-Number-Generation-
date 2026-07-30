@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+
 function RandomNumber() {
   var [random, setRandom] = useState(null)
 
@@ -6,7 +9,10 @@ function RandomNumber() {
   var generate = () => {
         const number = Math.floor(Math.random() * 100) + 1;
         setRandom(number)
+  }
 
+    var reset = () => {
+    setRandom(0)
   }
 
  
@@ -22,6 +28,7 @@ function RandomNumber() {
 
       <div className="buttons">
         <button onClick={generate}>Generate</button>
+        <button onClick={reset}>RESET</button>
         
       </div>
     </div>
