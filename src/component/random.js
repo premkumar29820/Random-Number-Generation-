@@ -1,55 +1,83 @@
 import { useState } from "react";
 
-
 function RandomNumber() {
-  var [random, setRandom] = useState(null)
-   const [luckypool, setluckypool] = useState("")
-
-
-
-  var generate = () => {
-        const number = Math.floor(Math.random() * 100) + 1;
-        setRandom(number)
+  const [random, setRandom] = useState(null);
+  const [luckypool, setluckypool] = useState("");
+  const [spinning, setSpinning] = useState(false);
   
 
-    if (random === 7) {
-      setluckypool("🍀 Lucky Number!");
-    } else if (
-      random === 2  ||
-      random === 29 ||
-      random === 100
-    ) {
-      setluckypool("🎉 Jackpot!");
-    } else {
-      setluckypool("😢 Try Again!");
-    }
+  const generate = () => {
+    setSpinning(true);
+    setluckypool("");
+  
+   
+    const interval = setInterval(() => {
+      setRandom(Math.floor(Math.random() * 100) + 1);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(interval);
+
+      const finalNumber = Math.floor(Math.random() * 100) + 1;
+
+      setRandom(finalNumber);
+      setSpinning(false);
+
+      if (finalNumber === 7) {
+        setluckypool("🍀 Lucky Number!");
+        
+      } else if (
+        finalNumber === 2 ||
+        finalNumber === 29 ||
+        finalNumber === 100
+      ) {
+        setluckypool("🎉 Jackpot!");
+       
+      } else {
+        setluckypool("😢 Try Again!");
+      }
+
+      setTimeout(() => {
+        setluckypool("");
+      }, 4000);
+
+    }, 2000);
   };
 
-
-    var reset = () => {
-    setRandom(null)
-  }
-
- 
+  const reset = () => {
+    setRandom(null);
+    setluckypool("");
+    setSpinning(false);
+  };
 
   return (
-    <div className="container">
-      <h1> 🎲 RANDOM NUMBER GENERATION</h1>
-         {random === null ? (
-        <p className="message">No number generated yet</p>
-      ) : (
-      <>
-       <h2 className="number">{random}</h2>
-       <h2>{luckypool}</h2>
-      </>
-      )}
+    <>
+     
+      <div className="container">
+        <h1>🎲 RANDOM NUMBER GENERATION</h1>
 
-      <div className="buttons">
-        <button onClick={generate}>Generate</button>
-        <button onClick={reset}>RESET</button>
-        
+        {random === null ? (
+          <p className="message">No number generated yet</p>
+        ) : (
+          <>
+            <h2 className={spinning ? "number spin" : "number"}>
+              {random}
+            </h2>
+
+            <h2>{luckypool}</h2>
+          </>
+        )}
+
+        <div className="buttons">
+          <button onClick={generate} disabled={spinning}>
+            {spinning ? "Generating..." : "Generate"}
+          </button>
+
+          <button onClick={reset}>Reset</button>
+        </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }
-export default RandomNumber
+
+export default RandomNumber;

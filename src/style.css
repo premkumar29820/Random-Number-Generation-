@@ -1,8 +1,10 @@
 body {
   margin: 0;
- 
+  padding: 0;
   background: linear-gradient(to right, #74ebd5, #9face6);
+   overflow: hidden;
 }
+
 
 .container {
   text-align: center;
@@ -14,7 +16,7 @@ h1 {
 }
 
 .number {
-    width:150px;
+  width:150px;
     height:150px;
     border-radius:50%;
     background:#4CAF50;
@@ -25,7 +27,20 @@ h1 {
     font-size:60px;
     margin-left: 46%;
     box-shadow:0 0 20px rgba(0,0,0,.3);
-  
+}
+
+.spin {
+  animation: spin 0.3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg) scale(1);
+  }
+
+  to {
+    transform: rotateY(360deg) scale(1.2);
+  }
 }
 
 .message {
@@ -47,16 +62,4 @@ button {
 
 button:hover {
   background: darkblue;
-}
-
-@keyframes pop {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
