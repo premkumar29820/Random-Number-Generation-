@@ -13,7 +13,7 @@ function RandomNumber() {
    
     const interval = setInterval(() => {
       setRandom(Math.floor(Math.random() * 100) + 1);
-    }, 1000);
+    }, 60);
 
     setTimeout(() => {
       clearInterval(interval);
@@ -27,8 +27,8 @@ function RandomNumber() {
         setluckypool("🍀 Lucky Number!");
         
       } else if (
-        finalNumber === 2 ||
-        finalNumber === 29 ||
+        finalNumber === 21 ||
+        finalNumber === 50 ||
         finalNumber === 100
       ) {
         setluckypool("🎉 Jackpot!");
@@ -36,10 +36,6 @@ function RandomNumber() {
       } else {
         setluckypool("😢 Try Again!");
       }
-
-      setTimeout(() => {
-        setluckypool("");
-      }, 4000);
 
     }, 2000);
   };
@@ -73,7 +69,7 @@ function RandomNumber() {
             {spinning ? "Generating..." : "Generate"}
           </button>
 
-          <button onClick={reset}>Reset</button>
+          <button onClick={reset} disabled={spinning}>Reset</button>
         </div>
       </div>
     </>

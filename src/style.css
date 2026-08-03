@@ -28,19 +28,24 @@ h1 {
     margin-left: 46%;
     box-shadow:0 0 20px rgba(0,0,0,.3);
 }
-
-.spin {
-  animation: spin 0.3s linear infinite;
+.spin{
+    animation:spin .25s linear infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotateY(0deg) scale(1);
-  }
+@keyframes spin{
 
-  to {
-    transform: rotateY(360deg) scale(1.2);
-  }
+    from{
+        transform:rotateY(0deg);
+    }
+
+    to{
+        transform:rotateY(360deg);
+    }
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
 
 .message {
